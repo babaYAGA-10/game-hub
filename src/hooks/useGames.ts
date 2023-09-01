@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
@@ -17,18 +18,24 @@ export interface Game {
 
 const useGames = (
   // arguments passed  
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  // selectedGenre: Genre | null,
+  // selectedPlatform: Platform | null
+    gameQuery: GameQuery
 ) =>
   useData<Game>(
     "/games", // calling hook at this endpoint
     { 
-        params: { 
+        /*params: { 
             genres: selectedGenre?.id, 
             platforms: selectedPlatform?.id 
+        }*/ 
+        params: { 
+            genres: gameQuery.genre?.id, 
+            platforms: gameQuery.platform?.id 
         } 
     },
-    [selectedGenre?.id, selectedPlatform?.id] // array of dependencies
+    // [selectedGenre?.id,  selectedPlatform?.id ] // array of dependencies
+    [gameQuery]
   );
 
 export default useGames;
