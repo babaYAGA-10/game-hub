@@ -31,7 +31,8 @@ const useGames = (
         }*/ 
         params: { 
             genres: gameQuery.genre?.id, 
-            platforms: gameQuery.platform?.id 
+            platforms: gameQuery.platform?.id,
+            ordering: gameQuery.sortOrder
         } 
     },
     // [selectedGenre?.id,  selectedPlatform?.id ] // array of dependencies
